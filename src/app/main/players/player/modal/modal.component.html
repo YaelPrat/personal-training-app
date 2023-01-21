@@ -1,0 +1,31 @@
+<div class="modal fade" [id]="this.modal_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">{{this.data.name}}</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row h-auto">
+          <div class="col-3">
+            <img [src]="this.data.image_link" class="card-img-top" alt="good face"
+                 style="max-height: 300px; width: 100%; height: auto; min-height: 250px">
+          </div>
+          <div class="col-3">
+            <p>Phone Number: {{this.data.phone}}</p>
+            <p>Training Sessions Left: {{this.data.subscription_left}}</p>
+            <p>Subscription Expiration Date: {{this.data.subscription_expiration_date.toLocaleDateString()}}</p>
+          </div>
+          <div class="col-6">
+            <p>Notes</p>
+            <player-modal-notes [data]="this.data"></player-modal-notes>
+            <br/>
+            <br/>
+          </div>
+        </div>
+        <br/>
+        <br/>
+      </div>
+    </div>
+  </div>
+</div>

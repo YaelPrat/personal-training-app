@@ -1,0 +1,38 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand fs-3" style="cursor: pointer" (click)="this.handleNavigation(this.Domains.CALENDAR)">🏀</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <button (click)="this.handleNavigation(this.Domains.CALENDAR)" class="btn shadow-none nav-link active fs-5 text-black" aria-current="page" href="#">
+            Calendar 📆
+          </button>
+        </li>
+        <li class="nav-item">
+          <button *ngIf="this.canViewPlayers" (click)="this.handleNavigation(this.Domains.PLAYERS)" class="btn shadow-none nav-link active fs-5 text-black" aria-current="page" href="#">
+            Players
+          </button>
+        </li>
+        <li class="nav-item">
+          <button (click)="this.handleNavigation(this.Domains.ABOUT)" class="btn shadow-none nav-link active fs-5 text-black" aria-current="page" href="#">
+            About
+          </button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+      <button (click)="this.handleNavigation(this.Domains.PROFILE)" class="btn me-3 shadow-none" type="button" id="accountDropdown">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <button class="btn shadow-none" (click)="handleSignOut()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+  </div>
+</nav>
+

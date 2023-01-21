@@ -1,0 +1,98 @@
+<ejs-schedule
+  #scheduleObj
+  [views]="views"
+  [startHour]="'10:00'"
+  [endHour]="'22:00'"
+  [currentView]="'Day'"
+  [timeScale]="timeScale"
+  [showTimeIndicator]="false"
+  [allowResizing]="false"
+  [allowKeyboardInteraction]="false"
+  [eventSettings]="eventSettings"
+  (eventRendered)="eventRender($event)"
+  (actionBegin)="onActionBegin($event)"
+  (actionComplete)="onActionComplete($event)"
+  (popupOpen)="onPopupOpen($event)"
+>
+
+  <ng-template #quickInfoTemplatesContent let-data>
+    <ng-container [ngTemplateOutlet]="data.elementType == 'cell' ? cellContent : eventContent"
+                  [ngTemplateOutletContext]="{data:data}"></ng-container>
+  </ng-template>
+  <ng-template #cellContent let-data="data">
+    <div class="quick-info-content">
+      <div class="e-cell-content">
+        <div class="content-area">
+          <ejs-textbox #locationObj id="location" placeholder="Location"></ejs-textbox>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #eventContent let-data="data">
+    <div class="quick-info-content">
+      <div class="event-content">
+        <div class="e-date-time">
+          <div class="e-date-time-icon e-icons"></div>
+          <div class="e-date-time-wrapper e-text-ellipsis">
+            <div class="e-date-time-details e-text-ellipsis">{{getHeaderDetails(data)}}</div>
+          </div>
+        </div>
+        <div class="e-location">
+          <div class="e-location-icon e-icons"></div>
+          <div class="e-location-details e-text-ellipsis">{{data['Location']}}</div>
+        </div>
+        <div class="e-description">
+          <div class="e-description-icon e-icons"></div>
+          <div class="e-description-details e-text-ellipsis">{{!data['Description'] ? 'No Description' : data['Description']}}</div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #quickInfoTemplatesFooter let-data>
+    <ng-container [ngTemplateOutlet]="data.elementType == 'cell' ? cellFooter : eventFooter"
+                  [ngTemplateOutletContext]="{data:data}"></ng-container>
+  </ng-template>
+  <ng-template #cellFooter class="e-popup-footer" let-data="data">
+    <button ejs-button class="e-event-create e-text-ellipsis e-control e-btn e-lib e-flat e-primary" title="Save"
+            id="Add"
+            (click)="handleEventCreate($event)">Add
+    </button>
+  </ng-template>
+
+  <ng-template #eventFooter class="e-popup-footer" let-data="data">
+  </ng-template>
+
+</ejs-schedule>
+
+
+<button [hidden]="true" id="lunchModalButton" type="button" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#bookAppointment">
+</button>
+
+<div class="modal fade" id="bookAppointment" tabindex="-1" aria-labelledby="bookAppointmentLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg ">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h3 class="modal-title" id="bookAppointmentLabel">Trainer: {{this.selected?.Subject}}
+          <br>Location: {{this.selected?.Location}}
+          <br>
+          Date: {{getHeaderDetails(this.selected)}}
+        </h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <h2 class="modal-body text-primary font-monospace">
+        Are you sure you want to {{this.selected?.Open ? "book" : "cancel"}} this session?
+      </h2>
+      <div class="modal-footer">
+        <button type="button" class="btn border border-secondary " data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary " data-bs-dismiss="modal"
+                (click)="handleTakeSession($event) ">Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-spinner-overlay message="Loading Calendar" *ngIf="isLoading"></app-spinner-overlay>

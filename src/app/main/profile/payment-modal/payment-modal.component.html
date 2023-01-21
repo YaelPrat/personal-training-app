@@ -1,0 +1,67 @@
+<div class="modal fade" id="Payment_Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Buy Subscription</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row justify-content-center align-items-center">
+          <profile-payment-modal-option class="col-3 m-2"
+                                        *ngFor="let data of this.paymentOptions"
+                                        [data]="data"
+                                        (selectCard)="this.setSelected($event)"></profile-payment-modal-option>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="Payment_Modal2" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Buy Subscription</h2>
+        <button type="button" id="paymentModal_dismiss" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card bg-light">
+          <div class="card-body">
+            <h1 class="card-title text-primary font-monospace fw-bold">Card Information</h1>
+            <h2 class="card-title text-capitalize text-warning font-monospace fw-bold">{{this.subscription}}</h2>
+            <form>
+              <div class="mb-3">
+                <div class="input-group mb-3">
+            <span class="input-group-text">
+              <mat-icon>credit_card</mat-icon>
+            </span>
+                  <input [(ngModel)]="this.cardNumber" type="text" inputmode="numeric" class="form-control shadow-none" id="card_number_input"
+                         name="card_number" placeholder="Card Number">
+                </div>
+              </div>
+              <div class="input-group mb-3">
+            <span class="input-group-text">
+              <mat-icon>calendar_today</mat-icon>
+            </span>
+                <input [(ngModel)]="this.expirationDate" type="text" class="form-control shadow-none"
+                       id="ExpDate" name="expiration_date" placeholder="MM/YYYY">
+              </div>
+              <div class="input-group mb-3">
+            <span class="input-group-text">
+              <mat-icon>lock</mat-icon>
+            </span>
+                <input [(ngModel)]="this.CVV" type="text" inputmode="numeric" class="form-control shadow-none"
+                       id="CVV" name="pass" placeholder="CVV">
+              </div>
+              <button class="btn btn-primary m-2 shadow-none" (click)="this.ProcessPayment($event)">Pay</button>
+              <button class="btn btn-outline-secondary m-2 shadow-none" data-bs-toggle="modal" data-bs-target="#Payment_Modal">Go Back</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-spinner-overlay *ngIf="this.Pay" message="Processing Payment"></app-spinner-overlay>

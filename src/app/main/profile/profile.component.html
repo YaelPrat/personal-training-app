@@ -1,0 +1,34 @@
+<div *ngIf="!this.isLoading" class="row h-100 w-100 justify-content-center align-items-center m-0 p-0  profile-page">
+  <div class="card  col-6" >
+    <div class="row h-50">
+      <div class="col-4 p-0 w-auto h-auto">
+        <img [src]="this.currentUser?.image_link" class="img-fluid rounded-start"
+             alt="profile_picture" style="height: 360px; width: 280px"
+             (click)="this.takeProfilePicture($event)">
+      </div>
+      <div class="col-8">
+        <div class="card-body">
+          <h1 class="card-title text-primary font-Fantasy fw-bold">{{this.currentUser.name}}</h1>
+          <h2 class="card-title">Email: {{this.currentUser.email}}</h2>
+          <h2 class="card-title">Phone: {{this.currentUser.phone}}</h2>
+          <h2 class="card-title">Subscription Expiration
+            Date: {{this.getSubscriptionEndDate()}}</h2>
+          <h2 class="card-title"> {{this.currentUser.subscription_left}} Sessions Left </h2>
+          <button class="btn btn-primary shadow-none" data-bs-toggle="modal" data-bs-target="#Payment_Modal">
+            Buy Subscription
+          </button>
+          <button class="btn border border-secondary shadow-none m-2" data-bs-toggle="modal" data-bs-target="#Receipt_Modal">
+            Show Receipts
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<input id="change_profile_picture" type="file" accept=".png, .jpeg, .jpg" (change)="this.changeProfilePicture($event)" [hidden]="true">
+
+<profile-payment-modal *ngIf="!this.isLoading"></profile-payment-modal>
+<profile-receipts-modal *ngIf="!this.isLoading" [receipts]="this.currentUser.receipts"></profile-receipts-modal>
+
+<app-spinner-overlay *ngIf="this.isLoading" [message]="this.loadingMessage"></app-spinner-overlay>

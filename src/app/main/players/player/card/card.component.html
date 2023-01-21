@@ -1,0 +1,10 @@
+<div class="card h-75">
+  <img [src]="this.data.image_link" class="card-img-top h-50 w-100" alt="good face" (load)="this.afterLoading()">
+  <div class="card-body">
+    <h3 class="card-title fs-3 font-Fantasy fw-bold"  >{{this.data.name}}</h3>
+    <p class="fs-6 font-Fantasy" >Phone: {{this.data.phone}}</p>
+    <p class="fs-6 font-Fantasy" >Last Note: {{this.last_note}}</p>
+    <p class="fs-6 font-Fantasy" >Training Sessions left: {{this.data.subscription_left}}</p>
+    <p class="fs-6 font-Fantasy">Subscription expiration date: {{this.data.subscription_expiration_date.toLocaleDateString()}}</p>
+  </div>
+</div>

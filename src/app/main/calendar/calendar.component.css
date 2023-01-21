@@ -1,0 +1,44 @@
+.e-schedule .e-vertical-view .e-time-cells-wrap table td, .e-schedule .e-vertical-view .e-work-cells {
+  font-size: 18px;
+  height: 100px;
+  text-align: center;
+
+}
+
+
+.e-schedule .e-vertical-view .e-day-wrapper .e-appointment {
+  background-color: rgb(52, 33, 172);
+   border-radius: 5%;
+}
+.e-schedule .e-vertical-view .e-work-hours {
+  background-color: #fafafa;
+}
+
+.e-schedule .e-vertical-view .e-day-wrapper .e-appointment .e-subject {
+  font-size: large;
+  color: white;
+}
+.e-schedule .e-vertical-view .e-day-wrapper .e-appointment .e-location {
+  font-size: medium;
+}
+
+
+.e-schedule .e-vertical-view .e-day-wrapper .e-appointment .e-time {
+  visibility: hidden;
+}
+.e-schedule .e-vertical-view .e-day-wrapper .e-appointment .e-appointment-details {
+  text-align: center;
+}
+.e-control, .e-css {
+  font-size: 16px;
+}
+
+.e-quick-popup-wrapper .e-event-popup .e-popup-header {
+  background-color: #fafafa;
+}
+
+
+.player-session-name {
+    color: #fafafa;
+    font-style: italic;
+}

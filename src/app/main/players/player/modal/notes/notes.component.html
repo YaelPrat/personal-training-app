@@ -1,0 +1,33 @@
+
+<div>
+<div class="row mb-2">
+  <div class="col-4 w-auto">
+    <button type="button" class="btn btn-success w-auto" (click)="this.addNote()"
+            [disabled]="this.noteText === '' && this.isAddDisabled">Add Note</button>
+  </div>
+  <div class="col-4 w-auto">
+    <button type="button" class="btn btn-danger w-auto" (click)="this.removeNote()" [disabled]="this.isRemoveDisabled">Delete Note</button>
+  </div>
+  <div class="col-6">
+  </div>
+</div>
+
+
+<div class="input-group mb-3">
+<textarea [(ngModel)]="this.noteText" type="text" class="form-control shadow-none" id="newNote"
+       name="new note" placeholder="New Note">
+</textarea>
+</div>
+
+<ag-grid-angular
+  style="width: 100%; height: 320px;"
+  class="ag-theme-alpine"
+  [columnDefs]="columnDefs"
+  [rowData]="this.data.notes"
+  (gridReady)="onGridReady($event)"
+  [ensureDomOrder]="true"
+  [rowSelection]="'single'"
+  [suppressRowClickSelection]="false"
+  (rowSelected)="this.isRowSelected($event)"
+></ag-grid-angular>
+</div>

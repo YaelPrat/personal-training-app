@@ -1,0 +1,15 @@
+<div class="card m-2" style="width: 18rem; height: 13rem;">
+  <div class="card-body">
+    <h2 class="card-title text-primary">{{this.data.name}}</h2>
+    <h4 class="card-subtitle mb-2 text-muted">{{this.data.price}}</h4>
+    <p class="card-text">
+      {{this.data.lastsFor ? 'Lasts for: ' + this.data.lastsFor : ''}}
+      <br/>
+      Number Of Sessions: {{this.data.amount}}
+    </p>
+    <button class="btn btn-outline-primary shadow-none"
+            data-bs-toggle="modal"
+            data-bs-target="#Payment_Modal2"
+            (click)="this.selectCard.emit(this.data.id)">{{this.data.name}}</button>
+  </div>
+</div>

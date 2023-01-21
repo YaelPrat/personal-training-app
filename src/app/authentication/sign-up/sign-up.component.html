@@ -1,0 +1,86 @@
+<div class="row h-100 justify-content-center align-items-center m-0 p-0 pages">
+  <div class="col-md-4">
+    <div class="card bg-light">
+      <div class="card-body">
+        <h1 class="card-title text-primary font-monospace fw-bold">Create An Account</h1>
+        <form>
+          <div class="input-group mb-3">
+            <span class="input-group-text me-2">
+              <mat-icon>today</mat-icon>
+            </span>
+            <mat-form-field>
+              <input id="birthday_" matInput [matDatepicker]="picker" [max]="maxDate" placeholder="Birthday">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker startView="year"></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">
+              <mat-icon>account_circle</mat-icon>
+            </span>
+            <input [(ngModel)]="username" type="text" class="form-control shadow-none" id="usernameInput"
+                   name="username" placeholder="Full Name">
+            <span class="input-group-text">
+              <mat-icon>alternate_email</mat-icon>
+            </span>
+            <input [(ngModel)]="email" type="email" class="form-control shadow-none" id="emailInput"
+                   aria-describedby="emailHelp"
+                   name="email" placeholder="Email Address">
+          </div>
+          <div class="input-group mb-3">
+                <span class="input-group-text">
+              <mat-icon>phone_iphone</mat-icon>
+            </span>
+            <input [(ngModel)]="phoneNumber" type="tel"
+                   class="form-control shadow-none" id="phoneNumber" name="pass"
+                   placeholder="Phone Number"/>
+            <span class="input-group-text">
+              <mat-icon>wc</mat-icon>
+            </span>
+            <select class="form-select shadow-none" id="GenderDropdown">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">
+              <mat-icon>lock</mat-icon>
+            </span>
+            <input [(ngModel)]="password" (keyup)="passwordChange()" (keydown)="passwordChange()"
+                   type="password"
+                   class="form-control shadow-none" id="passwordInput" name="pass" placeholder="Password"/>
+            <span class="input-group-text">
+              <mat-icon>lock</mat-icon>
+            </span>
+            <input [(ngModel)]="confirmPassword" type="password" class="form-control shadow-none"
+                   id="confirmPasswordInput" name="pass" placeholder="Confirm Password">
+          </div>
+          <span>
+              Password Strength
+            </span>
+          <div class="progress">
+            <div id="passwordStrength" class="progress-bar" [style.width.%]="passwordStrength"
+                 role="progressbar"
+                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <br>
+          <div>
+            <a>
+              Already have an account?
+            </a>
+            <button type="button" class="btn p-0 link-primary shadow-none" (click)="changePage(1)">Sign in</button>
+          </div>
+          <div>
+            <a>
+              Forgot your password?
+            </a>
+            <button type="button" class="btn p-0 link-primary shadow-none" (click)="changePage(3)">Reset</button>
+          </div>
+          <button type="submit" class="btn btn-primary mt-3 shadow-none" (click)="handleSignup()">
+            Create account
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

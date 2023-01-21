@@ -1,0 +1,10 @@
+<div class="container d-flex align-items-center justify-content-center">
+  <div class="row">
+    <players-player class="col-xl-3 col-md-6 mt-3"
+                    *ngFor="let player of data; index as card_index"
+                    [data]="player" [player_id]="card_index"
+                    (finishedLoading_)="this.loading($event)"></players-player>
+  </div>
+</div>
+
+<app-spinner-overlay message="Loading Players" *ngIf="isLoading">Loading Players</app-spinner-overlay>

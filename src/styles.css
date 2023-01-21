@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@syncfusion/ej2-base/styles/material.css';
+@import '@syncfusion/ej2-buttons/styles/material.css';
+@import '@syncfusion/ej2-calendars/styles/material.css';
+@import '@syncfusion/ej2-dropdowns/styles/material.css';
+@import '@syncfusion/ej2-inputs/styles/material.css';
+@import '@syncfusion/ej2-lists/styles/material.css';
+@import '@syncfusion/ej2-popups/styles/material.css';
+@import '@syncfusion/ej2-navigations/styles/material.css';
+@import '@syncfusion/ej2-angular-schedule/styles/material.css';
+@import "ag-grid-community/dist/styles/ag-grid.css";
+@import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+
+html, body { height: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: lightgray}
+
+.pages{
+    background-image: url('./assets/tumblr_otc2rmh00k1qjm946o1_1280.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+  }
+  .about-page{
+    background-image: url('./assets/tumblr_pn2mavoMPx1qjm946o1_1280.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+  }
+  .profile-page{
+    background-image: url('./assets/tumblr_otc2rmh00k1qjm946o1_1280.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+  }

@@ -1,0 +1,16 @@
+<div class="modal fade" id="Receipt_Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-l">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Receipts</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <profile-receipts-receipt
+          *ngFor="let rec of (this.receipts.length > 3 ? this.receipts.slice(-3) : this.receipts)"
+          [data]="rec"
+        > </profile-receipts-receipt>
+      </div>
+    </div>
+  </div>
+</div>

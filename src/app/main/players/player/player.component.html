@@ -1,0 +1,2 @@
+<player-card [data]="this.data" data-bs-toggle="modal" [attr.data-bs-target]="'#' + this.modal_id" (finishedLoading)="this.finishedLoading($event)"></player-card>
+<player-modal [data]="this.data" [modal_id]="this.modal_id"></player-modal>

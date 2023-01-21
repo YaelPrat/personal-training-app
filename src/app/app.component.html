@@ -1,0 +1,5 @@
+<main-navbar *ngIf="this.showNavbar()"></main-navbar>
+<router-outlet *ngIf="!this.isLoading"></router-outlet>
+<div toastContainer> </div>
+
+<app-spinner-overlay *ngIf="this.isLoading" message="Loading..."></app-spinner-overlay>
